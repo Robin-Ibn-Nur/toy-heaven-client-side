@@ -1,0 +1,37 @@
+@keyframes colorChange {
+    0% {
+        color: #FFD700;
+    }
+
+    /* Gold */
+    25% {
+        color: #FF5F6D;
+    }
+
+    /* Pink */
+    50% {
+        color: #82D8D8;
+    }
+
+    /* Light Blue */
+    75% {
+        color: #FFA69E;
+    }
+
+    /* Coral */
+    100% {
+        color: #FFD700;
+    }
+
+    /* Gold */
+}
+
+body {
+    font-family: cursive;
+    font-weight: normal;
+    letter-spacing: 0.2rem;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
