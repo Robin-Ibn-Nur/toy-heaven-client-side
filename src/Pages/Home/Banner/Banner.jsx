@@ -1,6 +1,5 @@
 import React from 'react';
-// import bannerImage from "../../../../public/homeBackground.jpg"
-import bannerImage from "../../../../public//toyHaven.jpg"
+import bannerImage from "../../../assets/toyHaven.jpg"
 import { Button } from '@nextui-org/react';
 import BossBaby from './BossBaby';
 
@@ -19,9 +18,6 @@ const Banner = () => {
     return (
         <div style={bannerStyle} className='relative flex justify-center items-center'>
             <div className='flex flex-col text-center justify-center items-center backdrop-opacity-10 backdrop-invert bg-black/30 p-2 lg:p-10 rounded-lg  tracking-widest'>
-                {/* <h1 style={comicSansTextStyles}>
-                    Welcome to the World of Kids Toys!
-                </h1> */}
                 <h1 className='text-4xl font-bold text-white'>
                     Welcome to the World of Kids Toys!
                 </h1>

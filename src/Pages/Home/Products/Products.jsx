@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs, Tab, Chip, Card, CardBody, CardHeader } from "@nextui-org/react";
+import { Tabs, Tab, Chip, Card, CardBody, CardHeader, CardFooter } from "@nextui-org/react";
 import Title from '../../../Components/Title/Title';
 
 const Products = () => {
@@ -32,6 +32,142 @@ const Products = () => {
             content: 'Set of colorful building blocks for creative play.',
         },
     ];
+    // let tabs = [
+    //     {
+    //         "name": "Marvel",
+    //         "toys": [
+    //             {
+    //                 "picture": "marvel_toy1.jpg",
+    //                 "name": "Marvel Toy 1",
+    //                 "price": 19.99,
+    //                 "rating": 4.5,
+    //                 "viewDetailsButton": "View Details"
+    //             },
+    //             {
+    //                 "picture": "marvel_toy2.jpg",
+    //                 "name": "Marvel Toy 2",
+    //                 "price": 24.99,
+    //                 "rating": 4.2,
+    //                 "viewDetailsButton": "View Details"
+    //             },
+    //             {
+    //                 "picture": "marvel_toy3.jpg",
+    //                 "name": "Marvel Toy 3",
+    //                 "price": 29.99,
+    //                 "rating": 4.7,
+    //                 "viewDetailsButton": "View Details"
+    //             },
+    //             {
+    //                 "picture": "marvel_toy4.jpg",
+    //                 "name": "Marvel Toy 4",
+    //                 "price": 34.99,
+    //                 "rating": 4.0,
+    //                 "viewDetailsButton": "View Details"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "name": "Avengers",
+    //         "toys": [
+    //             {
+    //                 "picture": "avengers_toy1.jpg",
+    //                 "name": "Avengers Toy 1",
+    //                 "price": 21.99,
+    //                 "rating": 4.3,
+    //                 "viewDetailsButton": "View Details"
+    //             },
+    //             {
+    //                 "picture": "avengers_toy2.jpg",
+    //                 "name": "Avengers Toy 2",
+    //                 "price": 26.99,
+    //                 "rating": 4.6,
+    //                 "viewDetailsButton": "View Details"
+    //             },
+    //             {
+    //                 "picture": "avengers_toy3.jpg",
+    //                 "name": "Avengers Toy 3",
+    //                 "price": 31.99,
+    //                 "rating": 4.1,
+    //                 "viewDetailsButton": "View Details"
+    //             },
+    //             {
+    //                 "picture": "avengers_toy4.jpg",
+    //                 "name": "Avengers Toy 4",
+    //                 "price": 36.99,
+    //                 "rating": 4.8,
+    //                 "viewDetailsButton": "View Details"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "name": "Star Wars",
+    //         "toys": [
+    //             {
+    //                 "picture": "star_wars_toy1.jpg",
+    //                 "name": "Star Wars Toy 1",
+    //                 "price": 17.99,
+    //                 "rating": 4.4,
+    //                 "viewDetailsButton": "View Details"
+    //             },
+    //             {
+    //                 "picture": "star_wars_toy2.jpg",
+    //                 "name": "Star Wars Toy 2",
+    //                 "price": 22.99,
+    //                 "rating": 4.9,
+    //                 "viewDetailsButton": "View Details"
+    //             },
+    //             {
+    //                 "picture": "star_wars_toy3.jpg",
+    //                 "name": "Star Wars Toy 3",
+    //                 "price": 27.99,
+    //                 "rating": 4.2,
+    //                 "viewDetailsButton": "View Details"
+    //             },
+    //             {
+    //                 "picture": "star_wars_toy4.jpg",
+    //                 "name": "Star Wars Toy 4",
+    //                 "price": 32.99,
+    //                 "rating": 4.7,
+    //                 "viewDetailsButton": "View Details"
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         "name": "Transformers",
+    //         "toys": [
+    //             {
+    //                 "picture": "transformers_toy1.jpg",
+    //                 "name": "Transformers Toy 1",
+    //                 "price": 23.99,
+    //                 "rating": 4.6,
+    //                 "viewDetailsButton": "View Details"
+    //             },
+    //             {
+    //                 "picture": "transformers_toy2.jpg",
+    //                 "name": "Transformers Toy 2",
+    //                 "price": 28.99,
+    //                 "rating": 4.3,
+    //                 "viewDetailsButton": "View Details"
+    //             },
+    //             {
+    //                 "picture": "transformers_toy3.jpg",
+    //                 "name": "Transformers Toy 3",
+    //                 "price": 33.99,
+    //                 "rating": 4.5,
+    //                 "viewDetailsButton": "View Details"
+    //             },
+    //             {
+    //                 "picture": "transformers_toy4.jpg",
+    //                 "name": "Transformers Toy 4",
+    //                 "price": 38.99,
+    //                 "rating": 4.4,
+    //                 "viewDetailsButton": "View Details"
+    //             }
+    //         ]
+    //     }
+    // ]
+
+
 
     return (
         <div className="container mx-auto flex items-center w-full flex-col">
@@ -55,15 +191,23 @@ const Products = () => {
                             <Chip size="sm" variant="faded">{item.label.length}</Chip>
                         </div>
                     }>
-                        <Card>
-                            <CardBody className='text-center'>
+                        <Card shadow='sm' isPressable onPress={() => console.log("item pressed")}>
+                            <CardHeader>
+                                <h3 className='text-center'>{item.toyName}</h3>
+                            </CardHeader>
+                            <CardBody className='text-center overflow-visible p-0'>
                                 <p>Description: {item.content}</p>
-                                <p>Price: {item.price}</p>
-                                <p>Rating: {item.rating}</p>
+
                             </CardBody>
+                            <CardFooter className="text-small justify-between">
+
+                                <p className="text-default-500">Price: {item.price}</p>
+                                <p className="text-default-500">Rating: {item.rating}</p>
+                            </CardFooter>
                         </Card>
                     </Tab>
                 )}
+
             </Tabs>
         </div>
     );
