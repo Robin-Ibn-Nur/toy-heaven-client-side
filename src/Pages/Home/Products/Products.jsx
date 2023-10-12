@@ -32,140 +32,140 @@ const Products = () => {
             content: 'Set of colorful building blocks for creative play.',
         },
     ];
-    // let tabs = [
-    //     {
-    //         "name": "Marvel",
-    //         "toys": [
-    //             {
-    //                 "picture": "marvel_toy1.jpg",
-    //                 "name": "Marvel Toy 1",
-    //                 "price": 19.99,
-    //                 "rating": 4.5,
-    //                 "viewDetailsButton": "View Details"
-    //             },
-    //             {
-    //                 "picture": "marvel_toy2.jpg",
-    //                 "name": "Marvel Toy 2",
-    //                 "price": 24.99,
-    //                 "rating": 4.2,
-    //                 "viewDetailsButton": "View Details"
-    //             },
-    //             {
-    //                 "picture": "marvel_toy3.jpg",
-    //                 "name": "Marvel Toy 3",
-    //                 "price": 29.99,
-    //                 "rating": 4.7,
-    //                 "viewDetailsButton": "View Details"
-    //             },
-    //             {
-    //                 "picture": "marvel_toy4.jpg",
-    //                 "name": "Marvel Toy 4",
-    //                 "price": 34.99,
-    //                 "rating": 4.0,
-    //                 "viewDetailsButton": "View Details"
-    //             }
-    //         ]
-    //     },
-    //     {
-    //         "name": "Avengers",
-    //         "toys": [
-    //             {
-    //                 "picture": "avengers_toy1.jpg",
-    //                 "name": "Avengers Toy 1",
-    //                 "price": 21.99,
-    //                 "rating": 4.3,
-    //                 "viewDetailsButton": "View Details"
-    //             },
-    //             {
-    //                 "picture": "avengers_toy2.jpg",
-    //                 "name": "Avengers Toy 2",
-    //                 "price": 26.99,
-    //                 "rating": 4.6,
-    //                 "viewDetailsButton": "View Details"
-    //             },
-    //             {
-    //                 "picture": "avengers_toy3.jpg",
-    //                 "name": "Avengers Toy 3",
-    //                 "price": 31.99,
-    //                 "rating": 4.1,
-    //                 "viewDetailsButton": "View Details"
-    //             },
-    //             {
-    //                 "picture": "avengers_toy4.jpg",
-    //                 "name": "Avengers Toy 4",
-    //                 "price": 36.99,
-    //                 "rating": 4.8,
-    //                 "viewDetailsButton": "View Details"
-    //             }
-    //         ]
-    //     },
-    //     {
-    //         "name": "Star Wars",
-    //         "toys": [
-    //             {
-    //                 "picture": "star_wars_toy1.jpg",
-    //                 "name": "Star Wars Toy 1",
-    //                 "price": 17.99,
-    //                 "rating": 4.4,
-    //                 "viewDetailsButton": "View Details"
-    //             },
-    //             {
-    //                 "picture": "star_wars_toy2.jpg",
-    //                 "name": "Star Wars Toy 2",
-    //                 "price": 22.99,
-    //                 "rating": 4.9,
-    //                 "viewDetailsButton": "View Details"
-    //             },
-    //             {
-    //                 "picture": "star_wars_toy3.jpg",
-    //                 "name": "Star Wars Toy 3",
-    //                 "price": 27.99,
-    //                 "rating": 4.2,
-    //                 "viewDetailsButton": "View Details"
-    //             },
-    //             {
-    //                 "picture": "star_wars_toy4.jpg",
-    //                 "name": "Star Wars Toy 4",
-    //                 "price": 32.99,
-    //                 "rating": 4.7,
-    //                 "viewDetailsButton": "View Details"
-    //             }
-    //         ]
-    //     },
-    //     {
-    //         "name": "Transformers",
-    //         "toys": [
-    //             {
-    //                 "picture": "transformers_toy1.jpg",
-    //                 "name": "Transformers Toy 1",
-    //                 "price": 23.99,
-    //                 "rating": 4.6,
-    //                 "viewDetailsButton": "View Details"
-    //             },
-    //             {
-    //                 "picture": "transformers_toy2.jpg",
-    //                 "name": "Transformers Toy 2",
-    //                 "price": 28.99,
-    //                 "rating": 4.3,
-    //                 "viewDetailsButton": "View Details"
-    //             },
-    //             {
-    //                 "picture": "transformers_toy3.jpg",
-    //                 "name": "Transformers Toy 3",
-    //                 "price": 33.99,
-    //                 "rating": 4.5,
-    //                 "viewDetailsButton": "View Details"
-    //             },
-    //             {
-    //                 "picture": "transformers_toy4.jpg",
-    //                 "name": "Transformers Toy 4",
-    //                 "price": 38.99,
-    //                 "rating": 4.4,
-    //                 "viewDetailsButton": "View Details"
-    //             }
-    //         ]
-    //     }
-    // ]
+    let tablet = [
+        {
+            "category": "Marvel",
+            "toys": [
+                {
+                    "picture": "marvel_toy1.jpg",
+                    "name": "Iron Man",
+                    "price": 19.99,
+                    "rating": 4.5,
+                    "viewDetailsButton": "View Details"
+                },
+                {
+                    "picture": "marvel_toy2.jpg",
+                    "name": "Captain America",
+                    "price": 24.99,
+                    "rating": 4.2,
+                    "viewDetailsButton": "View Details"
+                },
+                {
+                    "picture": "marvel_toy3.jpg",
+                    "name": "Thor",
+                    "price": 29.99,
+                    "rating": 4.7,
+                    "viewDetailsButton": "View Details"
+                },
+                {
+                    "picture": "marvel_toy4.jpg",
+                    "name": "Black Widow",
+                    "price": 34.99,
+                    "rating": 4.0,
+                    "viewDetailsButton": "View Details"
+                }
+            ]
+        },
+        {
+            "categoryname": "Avengers",
+            "toys": [
+                {
+                    "picture": "avengers_toy1.jpg",
+                    "name": "Hulk",
+                    "price": 21.99,
+                    "rating": 4.3,
+                    "viewDetailsButton": "View Details"
+                },
+                {
+                    "picture": "avengers_toy2.jpg",
+                    "name": "Hawkeye",
+                    "price": 26.99,
+                    "rating": 4.6,
+                    "viewDetailsButton": "View Details"
+                },
+                {
+                    "picture": "avengers_toy3.jpg",
+                    "name": "Scarlet Witch",
+                    "price": 31.99,
+                    "rating": 4.1,
+                    "viewDetailsButton": "View Details"
+                },
+                {
+                    "picture": "avengers_toy4.jpg",
+                    "name": "Doctor Strange",
+                    "price": 36.99,
+                    "rating": 4.8,
+                    "viewDetailsButton": "View Details"
+                }
+            ]
+        },
+        {
+            "category": "Star Wars",
+            "toys": [
+                {
+                    "picture": "star_wars_toy1.jpg",
+                    "name": "Luke Skywalker",
+                    "price": 17.99,
+                    "rating": 4.4,
+                    "viewDetailsButton": "View Details"
+                },
+                {
+                    "picture": "star_wars_toy2.jpg",
+                    "name": "Princess Leia",
+                    "price": 22.99,
+                    "rating": 4.9,
+                    "viewDetailsButton": "View Details"
+                },
+                {
+                    "picture": "star_wars_toy3.jpg",
+                    "name": "Darth Vader",
+                    "price": 27.99,
+                    "rating": 4.2,
+                    "viewDetailsButton": "View Details"
+                },
+                {
+                    "picture": "star_wars_toy4.jpg",
+                    "name": "Yoda",
+                    "price": 32.99,
+                    "rating": 4.7,
+                    "viewDetailsButton": "View Details"
+                }
+            ]
+        },
+        {
+            "categoryname": "Transformers",
+            "toys": [
+                {
+                    "picture": "transformers_toy1.jpg",
+                    "name": "Optimus Prime",
+                    "price": 23.99,
+                    "rating": 4.6,
+                    "viewDetailsButton": "View Details"
+                },
+                {
+                    "picture": "transformers_toy2.jpg",
+                    "name": "Bumblebee",
+                    "price": 28.99,
+                    "rating": 4.3,
+                    "viewDetailsButton": "View Details"
+                },
+                {
+                    "picture": "transformers_toy3.jpg",
+                    "name": "Megatron",
+                    "price": 33.99,
+                    "rating": 4.5,
+                    "viewDetailsButton": "View Details"
+                },
+                {
+                    "picture": "transformers_toy4.jpg",
+                    "name": "Starscream",
+                    "price": 38.99,
+                    "rating": 4.4,
+                    "viewDetailsButton": "View Details"
+                }
+            ]
+        }
+    ]
 
 
 

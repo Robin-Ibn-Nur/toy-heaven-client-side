@@ -7,7 +7,7 @@ const Title = ({ title }) => {
             <div className='border rounded-full mx-auto mb-4 flex items-center h-[60px] w-[60px]'>
                 <GiDuck size={50} color='orange' />
             </div>
-            <h4 className='font-black text-2xl '>{title}</h4>
+            <h4 className='text-center font-black text-2xl '>{title}</h4>
         </div>
     );
 };

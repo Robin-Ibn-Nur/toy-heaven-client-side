@@ -1,5 +1,6 @@
 import React from 'react';
-
+import logo from "../../assets/heaven.png"
+import { Image } from '@nextui-org/react';
 const NameAndLogo = () => {
     const colorfulTextStyles = {
         fontFamily: 'Arial, sans-serif',
@@ -12,7 +13,10 @@ const NameAndLogo = () => {
         backgroundClip: 'text',
         animation: 'colorChange 4s infinite',
     };
-    return <p style={colorfulTextStyles}>Toy Heaven</p>
+    return <div className='flex items-center'>
+        <Image src={logo} width={48} height={48} />
+        <p style={colorfulTextStyles}>Toy Heaven</p>
+    </div>
 };
 
 export default NameAndLogo;
