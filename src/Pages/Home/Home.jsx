@@ -3,6 +3,7 @@ import Banner from './Banner/Banner';
 import Commitment from './Commitment/Commitment';
 import Products from './Products/Products';
 import Gellary from './Gellary/Gellary';
+import MegaSale from './MegaSale/MegaSale';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <Commitment />
             <Products />
             <Gellary />
+            <MegaSale />
         </>
     );
 };
