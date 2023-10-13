@@ -1,8 +1,8 @@
 import { Button, Input, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from '@nextui-org/react';
 import React, { useEffect, useState } from 'react';
 import { SearchIcon } from './SearchIcon';
-import { columns, users } from './data';
-import { useNavigate } from 'react-router-dom';
+import { columns } from './data';
+
 import axios from 'axios';
 
 const SearchAndTable = ({ renderCell }) => {

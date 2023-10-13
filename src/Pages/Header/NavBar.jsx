@@ -7,13 +7,12 @@ import NameAndLogo from "../../Components/WebsiteName/NameAndLogo";
 
 
 const NavBar = () => {
-    const { logOut } = useContext(AuthContext)
+    const { logOut, user } = useContext(AuthContext)
 
     const handleLogOut = () => {
         logOut()
     }
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    // const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const menuItems = [
         "Profile",
         "Home",
@@ -38,16 +37,18 @@ const NavBar = () => {
                 All Toys
             </NavLink>
         </NavbarItem>
-        <NavbarItem className="cursor-pointer">
-            <NavLink to="/my-toys" color="foreground" >
-                My Toys
-            </NavLink>
-        </NavbarItem>
-        <NavbarItem className="cursor-pointer">
-            <NavLink to="/add-a-toys" color="foreground" >
-                Add a Toys
-            </NavLink>
-        </NavbarItem>
+        {user && <>
+            <NavbarItem className="cursor-pointer">
+                <NavLink to="/my-toys" color="foreground" >
+                    My Toys
+                </NavLink>
+            </NavbarItem>
+            <NavbarItem className="cursor-pointer">
+                <NavLink to="/add-a-toys" color="foreground" >
+                    Add a Toys
+                </NavLink>
+            </NavbarItem>
+        </>}
         <NavbarItem className="cursor-pointer">
             <NavLink to="/blogs" color="foreground" >
                 Blogs
@@ -55,21 +56,10 @@ const NavBar = () => {
         </NavbarItem>
     </>
     const loginAndSignUp = <>
-        <NavbarItem className="hidden lg:flex gap-5">
-
-            {/* <Link onPress={onOpen} color="primary" variant="bordered">Login</Link> */}
-            {/* <Button onPress={onOpen} color="primary" variant="ghost">Login</Button> */}
+        <NavbarItem className="hidden lg:flex items-center gap-5">
             <Button onClick={handleLogOut} color="danger" variant="ghost">Log out</Button>
-
-            {/* <Button color="primary" variant="ghost">
-                <NavLink to="signUp&logIn">Log in</NavLink></Button> */}
+            <NavLink to="signUp&logIn">Sign Up</NavLink>
             <NavLink to="signUp&logIn">Log in</NavLink>
-            {/* <LogIn isOpen={isOpen} onOpenChange={onOpenChange} />  signUp&logIn */}
-        </NavbarItem>
-        <NavbarItem>
-            <Button color="warning" variant="ghost" >
-                Sign Up
-            </Button>
         </NavbarItem>
     </>
 

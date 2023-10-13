@@ -2,17 +2,11 @@ import { Button, Card, CardBody, Image, Progress } from "@nextui-org/react";
 import { useLoaderData } from "react-router-dom";
 import { HeartIcon } from "./Icons/HeartIcon";
 import { useState } from "react";
-import { RepeatOneIcon } from "./Icons/RepeatOneIcon";
-import { PreviousIcon } from "./Icons/PreviousIcon";
-import { PauseCircleIcon } from "./Icons/PauseCircleIcon";
-import { NextIcon } from "./Icons/NextIcon";
-import { ShuffleIcon } from "./Icons/ShuffleIcon";
-import { AiOutlineStar } from "react-icons/ai"
+
 
 const ToyDetailsPage = () => {
     const [liked, setLiked] = useState(false);
     const data = useLoaderData();
-    console.log(data);
 
     return (
         <div

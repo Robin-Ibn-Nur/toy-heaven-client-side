@@ -40,8 +40,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/toy/:id",
-                // element: <PrivateRoute><ToyDetailsPage /></PrivateRoute>,
-                element: <ToyDetailsPage />,
+                element: <PrivateRoute><ToyDetailsPage /></PrivateRoute>,
+                // element: <ToyDetailsPage />,
                 loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
             },
             // {

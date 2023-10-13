@@ -10,9 +10,8 @@ const SignUp = ({ setSelected }) => {
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const onSubmit = (data) => {
         console.log(data);
-        // createUser(data?.email, data?.password)
         createUser(data?.email, data?.password)
-        // reset()
+        reset()
     };
     return (
         <div className='h-auto'>

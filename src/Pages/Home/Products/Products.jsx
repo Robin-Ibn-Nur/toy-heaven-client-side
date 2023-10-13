@@ -1,179 +1,30 @@
-import React from 'react';
-import { Tabs, Tab, Chip, Card, CardBody, CardHeader, CardFooter } from "@nextui-org/react";
+import React, { useEffect, useState } from 'react';
+import { Tabs, Tab, Chip, Card, CardBody, CardHeader, CardFooter, Image } from "@nextui-org/react";
 import Title from '../../../Components/Title/Title';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Products = () => {
-    let tabs = [
-        {
-            id: 1,
-            label: 'Action Figures',
-            imageUrl: 'action-figure.jpg',
-            toyName: 'Superhero Action Figure',
-            price: 19.99,
-            rating: 4.5,
-            content: 'Collectible superhero action figure with detailed features.',
-        },
-        {
-            id: 2,
-            label: 'Dolls',
-            imageUrl: 'doll.jpg',
-            toyName: 'Fashion Doll',
-            price: 14.99,
-            rating: 4.2,
-            content: 'Fashionable doll with various outfits and'
-        },
-        {
-            id: 3,
-            label: 'Building Blocks',
-            imageUrl: 'building-blocks.jpg',
-            toyName: 'Classic Building Blocks',
-            price: 29.99,
-            rating: 4.8,
-            content: 'Set of colorful building blocks for creative play.',
-        },
-    ];
-    let tablet = [
-        {
-            "category": "Marvel",
-            "toys": [
-                {
-                    "picture": "marvel_toy1.jpg",
-                    "name": "Iron Man",
-                    "price": 19.99,
-                    "rating": 4.5,
-                    "viewDetailsButton": "View Details"
-                },
-                {
-                    "picture": "marvel_toy2.jpg",
-                    "name": "Captain America",
-                    "price": 24.99,
-                    "rating": 4.2,
-                    "viewDetailsButton": "View Details"
-                },
-                {
-                    "picture": "marvel_toy3.jpg",
-                    "name": "Thor",
-                    "price": 29.99,
-                    "rating": 4.7,
-                    "viewDetailsButton": "View Details"
-                },
-                {
-                    "picture": "marvel_toy4.jpg",
-                    "name": "Black Widow",
-                    "price": 34.99,
-                    "rating": 4.0,
-                    "viewDetailsButton": "View Details"
-                }
-            ]
-        },
-        {
-            "categoryname": "Avengers",
-            "toys": [
-                {
-                    "picture": "avengers_toy1.jpg",
-                    "name": "Hulk",
-                    "price": 21.99,
-                    "rating": 4.3,
-                    "viewDetailsButton": "View Details"
-                },
-                {
-                    "picture": "avengers_toy2.jpg",
-                    "name": "Hawkeye",
-                    "price": 26.99,
-                    "rating": 4.6,
-                    "viewDetailsButton": "View Details"
-                },
-                {
-                    "picture": "avengers_toy3.jpg",
-                    "name": "Scarlet Witch",
-                    "price": 31.99,
-                    "rating": 4.1,
-                    "viewDetailsButton": "View Details"
-                },
-                {
-                    "picture": "avengers_toy4.jpg",
-                    "name": "Doctor Strange",
-                    "price": 36.99,
-                    "rating": 4.8,
-                    "viewDetailsButton": "View Details"
-                }
-            ]
-        },
-        {
-            "category": "Star Wars",
-            "toys": [
-                {
-                    "picture": "star_wars_toy1.jpg",
-                    "name": "Luke Skywalker",
-                    "price": 17.99,
-                    "rating": 4.4,
-                    "viewDetailsButton": "View Details"
-                },
-                {
-                    "picture": "star_wars_toy2.jpg",
-                    "name": "Princess Leia",
-                    "price": 22.99,
-                    "rating": 4.9,
-                    "viewDetailsButton": "View Details"
-                },
-                {
-                    "picture": "star_wars_toy3.jpg",
-                    "name": "Darth Vader",
-                    "price": 27.99,
-                    "rating": 4.2,
-                    "viewDetailsButton": "View Details"
-                },
-                {
-                    "picture": "star_wars_toy4.jpg",
-                    "name": "Yoda",
-                    "price": 32.99,
-                    "rating": 4.7,
-                    "viewDetailsButton": "View Details"
-                }
-            ]
-        },
-        {
-            "categoryname": "Transformers",
-            "toys": [
-                {
-                    "picture": "transformers_toy1.jpg",
-                    "name": "Optimus Prime",
-                    "price": 23.99,
-                    "rating": 4.6,
-                    "viewDetailsButton": "View Details"
-                },
-                {
-                    "picture": "transformers_toy2.jpg",
-                    "name": "Bumblebee",
-                    "price": 28.99,
-                    "rating": 4.3,
-                    "viewDetailsButton": "View Details"
-                },
-                {
-                    "picture": "transformers_toy3.jpg",
-                    "name": "Megatron",
-                    "price": 33.99,
-                    "rating": 4.5,
-                    "viewDetailsButton": "View Details"
-                },
-                {
-                    "picture": "transformers_toy4.jpg",
-                    "name": "Starscream",
-                    "price": 38.99,
-                    "rating": 4.4,
-                    "viewDetailsButton": "View Details"
-                }
-            ]
-        }
-    ]
+    const [toys, setToys] = useState([]);
 
+    useEffect(() => {
+        axios.get("http://localhost:5000/alltoys")
+            .then(response => {
+                setToys(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching data: ', error);
+            });
+    }, []);
 
+    const uniqueCategories = Array.from(new Set(toys.map(toy => toy.category)));
 
     return (
         <div className="container mx-auto flex items-center w-full flex-col">
             <Title title="Shop By Category" />
             <Tabs
-                aria-label="Dynamic tabs" items={tabs}
+                aria-label="Dynamic tabs"
+                items={uniqueCategories.map((category, index) => ({ id: index, label: category }))}
                 color="primary"
                 variant="underlined"
                 classNames={{
@@ -186,28 +37,39 @@ const Products = () => {
                 {(item) => (
                     <Tab key={item.id} title={
                         <div className="flex items-center space-x-2">
-
                             <span>{item.label}</span>
                             <Chip size="sm" variant="faded">{item.label.length}</Chip>
                         </div>
                     }>
-                        <Card shadow='sm' isPressable onPress={() => console.log("item pressed")}>
-                            <CardHeader>
-                                <h3 className='text-center'>{item.toyName}</h3>
-                            </CardHeader>
-                            <CardBody className='text-center overflow-visible p-0'>
-                                <p>Description: {item.content}</p>
-
-                            </CardBody>
-                            <CardFooter className="text-small justify-between">
-
-                                <p className="text-default-500">Price: {item.price}</p>
-                                <p className="text-default-500">Rating: {item.rating}</p>
-                            </CardFooter>
-                        </Card>
+                        <div className="flex flex-wrap gap-5">
+                            {toys.map((toy) => {
+                                if (toy.category === item.label) {
+                                    return (
+                                        <Link to={`/toy/${toy._id}`} key={toy._id}>
+                                            <Card shadow="sm" isPressable onPress={() => console.log("item pressed")}>
+                                                <CardBody className="overflow-visible p-0">
+                                                    <Image
+                                                        shadow="sm"
+                                                        radius="lg"
+                                                        width="100%"
+                                                        alt={toy?.toyName}
+                                                        className="w-full object-cover h-[140px]"
+                                                        src={toy?.photo}
+                                                    />
+                                                </CardBody>
+                                                <CardFooter className="text-small justify-between">
+                                                    <b>{toy?.rating}</b>
+                                                    <p className="text-default-500">{toy?.price}</p>
+                                                </CardFooter>
+                                            </Card>
+                                        </Link>
+                                    );
+                                }
+                                return null;
+                            })}
+                        </div>
                     </Tab>
                 )}
-
             </Tabs>
         </div>
     );

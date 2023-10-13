@@ -7,19 +7,20 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { MdOutlineDriveFileRenameOutline, MdPriceChange, MdProductionQuantityLimits } from 'react-icons/md'
 import { FcRating } from 'react-icons/fc'
 const AddToyForm = () => {
+    const { user, loading } = useContext(AuthContext);
     const [value, setValue] = useState("");
-    const { user } = useContext(AuthContext);
 
     const { register, handleSubmit, reset } = useForm();
     // imageBB_url
     const imageBB_url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_token}`
 
     const onSubmit = async (data) => {
-
+        console.log(data.photo)
         const newCollection = {
             ...data,
             userEmail: user?.email,
         };
+        console.log(newCollection.photo);
         try {
 
 
@@ -28,10 +29,9 @@ const AddToyForm = () => {
 
             // post image to imageBB
             const response = await axios.post(imageBB_url, formData)
-
             if (response.data.success) {
                 const imgURL = response.data.data.display_url;
-                data.photo = imgURL;
+                newCollection.photo = imgURL;
 
                 // set the data to database
                 const res = await axios.post('http://localhost:5000/toys', newCollection);
@@ -67,6 +67,14 @@ const AddToyForm = () => {
         { label: 'Transformers', value: 'Transformers' },
     ];
 
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center h-screen">
+                <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+            </div>
+        )
+
+    }
     return (
         <form onSubmit={handleSubmit(onSubmit)} className='container mx-auto pb-5'>
             <div className="space-y-6">
@@ -297,7 +305,7 @@ const AddToyForm = () => {
                     type="submit"
                     className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"
                 >
-                    Save
+                    {loading ? "loading..." : "Save"}
                 </Button>
             </div>
         </form>
