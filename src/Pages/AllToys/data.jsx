@@ -1,8 +1,10 @@
-import React from "react";
+
+
 const columns = [
     { name: "NAME", uid: "name" },
-    { name: "ROLE", uid: "role" },
-    { name: "STATUS", uid: "status" },
+    { name: "CATEGORY", uid: "category" },
+    { name: "PRICE", uid: "price" },
+    { name: "QUANTITY", uid: "quantity" },
     { name: "ACTIONS", uid: "actions" },
 ];
 
@@ -58,5 +60,6 @@ const users = [
         email: "kristen.cooper@example.com",
     },
 ];
+
 
 export { columns, users };

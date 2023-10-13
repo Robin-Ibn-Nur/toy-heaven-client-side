@@ -1,24 +1,21 @@
 import React, { useContext } from "react";
-// import "./LogIn.css";
 import { Button, Divider, Input, Link } from "@nextui-org/react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import GoogleIcon from "../../Components/Icons/GoogleIcon";
-// import { MailIcon } from '../../Components/Icons/MailIcon';
-// import { LockIcon } from '../../Components/Icons/LockIcon';
+
 
 const LogIn = ({ setSelected }) => {
     const { logIn } = useContext(AuthContext);
 
-    const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+    const { register, handleSubmit, reset } = useForm();
 
 
 
     const onSubmit = (data) => {
-        console.log(data);
         logIn(data?.email, data?.password)
 
-        // reset()
+        reset()
     };
     return (
         //         <div className="relative min-h-screen flex ">

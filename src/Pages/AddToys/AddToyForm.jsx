@@ -4,7 +4,8 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import Swal from "sweetalert2"
 import { AuthContext } from '../../Provider/AuthProvider';
-
+import { MdOutlineDriveFileRenameOutline, MdPriceChange, MdProductionQuantityLimits } from 'react-icons/md'
+import { FcRating } from 'react-icons/fc'
 const AddToyForm = () => {
     const [value, setValue] = useState("");
     const { user } = useContext(AuthContext);
@@ -19,7 +20,6 @@ const AddToyForm = () => {
             ...data,
             userEmail: user?.email,
         };
-        console.log(newCollection);
         try {
 
 
@@ -28,14 +28,13 @@ const AddToyForm = () => {
 
             // post image to imageBB
             const response = await axios.post(imageBB_url, formData)
-            console.log("response", response);
+
             if (response.data.success) {
                 const imgURL = response.data.data.display_url;
                 data.photo = imgURL;
 
                 // set the data to database
-                const res = await axios.post('http://localhost:5000/toys', data);
-                console.log(res, "toy kita add hoise ni");
+                const res = await axios.post('http://localhost:5000/toys', newCollection);
                 if (res.data.insertedId) {
                     reset()
                     Swal.fire({
@@ -71,7 +70,7 @@ const AddToyForm = () => {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className='container mx-auto pb-5'>
             <div className="space-y-6">
-                <div className='flex space-x-40'>
+                <div className='grid md:grid-cols-2 lg:grid-cols-4 space-x-5'>
                     <div>
                         <label htmlFor="toyname" className="text-sm font-semibold text-gray-200">Toy Name</label>
                         <div className="mt-2 flex rounded-md shadow-sm">
@@ -105,6 +104,12 @@ const AddToyForm = () => {
                                     ],
                                 }}
                                 placeholder="Write your toy name here ...."
+                                startContent={
+                                    <div className="pointer-events-none flex items-center">
+                                        <MdOutlineDriveFileRenameOutline />
+                                    </div>
+                                }
+
                             />
                         </div>
                     </div>
@@ -142,7 +147,7 @@ const AddToyForm = () => {
                                 placeholder="0.00"
                                 startContent={
                                     <div className="pointer-events-none flex items-center">
-                                        <span className="text-default-400 text-small">$</span>
+                                        <MdPriceChange />
                                     </div>
                                 }
                             />
@@ -183,14 +188,55 @@ const AddToyForm = () => {
                                 placeholder="0.00"
                                 startContent={
                                     <div className="pointer-events-none flex items-center">
-                                        <span className="text-default-400 text-small">⁕</span>
+                                        <FcRating />
+                                    </div>
+                                }
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label htmlFor="rating" className="text-sm font-semibold text-gray-200">Quantity</label>
+                        <div className="mt-2 flex rounded-md shadow-sm">
+                            <Input
+                                type="number"
+                                id="rating"
+                                name="rating"
+                                isClearable
+                                radius="lg"
+                                {...register('quantity')}
+
+                                classNames={{
+                                    label: "text-black/50 dark:text-white/90",
+                                    input: [
+                                        "bg-transparent",
+                                        "text-black/90 dark:text-white/90",
+                                        "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+                                    ],
+                                    innerWrapper: "bg-transparent",
+                                    inputWrapper: [
+                                        "shadow-xl",
+                                        "bg-default-200/50",
+                                        "dark:bg-default/60",
+                                        "backdrop-blur-xl",
+                                        "backdrop-saturate-200",
+                                        "hover:bg-default-200/70",
+                                        "dark:hover:bg-default/70",
+                                        "group-data-[focused=true]:bg-default-200/50",
+                                        "dark:group-data-[focused=true]:bg-default/60",
+                                        "!cursor-text",
+                                    ],
+                                }}
+                                placeholder="0.00"
+                                startContent={
+                                    <div className="pointer-events-none flex items-center">
+                                        <MdProductionQuantityLimits />
                                     </div>
                                 }
                             />
                         </div>
                     </div>
                 </div>
-                <div className="w-1/3">
+                <div className="w-1/4">
                     <label htmlFor="category" className="text-sm font-semibold text-gray-200">Select Your Toy Category</label>
                     <div className="mt-2">
                         <Select
@@ -205,8 +251,6 @@ const AddToyForm = () => {
                                 </SelectItem>
                             ))}
                         </Select>
-
-
                     </div>
                 </div>
                 <div>

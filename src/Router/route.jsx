@@ -9,6 +9,8 @@ import LogIn from "../SharedPages/LogInPage/LogIn";
 import SignUp from "../SharedPages/SignUpPage/SignUp";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import SignUpAndLogInPage from "../SharedPages/SignUpAndLogInPage/SignUpAndLogInPage";
+import ToyDetailsPage from "../Pages/ToyDetailsPage/ToyDetailsPage";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +37,12 @@ export const router = createBrowserRouter([
             {
                 path: "blogs",
                 element: <Blogs />
+            },
+            {
+                path: "/toy/:id",
+                // element: <PrivateRoute><ToyDetailsPage /></PrivateRoute>,
+                element: <ToyDetailsPage />,
+                loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
             },
             // {
             //     path: "login",
