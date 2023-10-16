@@ -1,16 +1,39 @@
 import React, { useContext, useState } from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, useDisclosure } from "@nextui-org/react";
-import LogIn from "../../SharedPages/LogInPage/LogIn";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Avatar, Tooltip } from "@nextui-org/react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { NavLink } from "react-router-dom";
 import NameAndLogo from "../../Components/WebsiteName/NameAndLogo";
+import Swal from "sweetalert2";
 
 
 const NavBar = () => {
     const { logOut, user } = useContext(AuthContext)
 
     const handleLogOut = () => {
-        logOut()
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Want to log out!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOut()
+                    .then(() => {
+                    })
+                    .catch(error => {
+                        Swal.fire(`Please Check your email and password', ${error.message}`)
+                    })
+                Swal.fire(
+                    'Log out!',
+                    'You are successfully loged out.',
+                    'success'
+                )
+            }
+        })
+
     }
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuItems = [
@@ -65,6 +88,19 @@ const NavBar = () => {
                     <NavLink to="signUp&logIn">Sign Up</NavLink>
                     <NavLink to="signUp&logIn">Log in</NavLink>
                 </>)}
+        </NavbarItem>
+        <NavbarItem className="hidden lg:flex items-center gap-5">
+
+            {user ?
+                <Tooltip content={user?.displayName}>
+                    <Avatar isBordered color="success" src={user?.photoURL
+                    } />
+                </Tooltip>
+                :
+                <Tooltip content="No User">
+                    <Avatar showFallback src='https://images.unsplash.com' />
+                </Tooltip>
+            }
         </NavbarItem>
     </>
 

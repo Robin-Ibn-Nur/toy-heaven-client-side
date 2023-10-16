@@ -3,6 +3,8 @@ import { Button, Divider, Input, Link } from "@nextui-org/react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import GoogleIcon from "../../Components/Icons/GoogleIcon";
+import { useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const LogIn = ({ setSelected }) => {
@@ -10,11 +12,29 @@ const LogIn = ({ setSelected }) => {
 
     const { register, handleSubmit, reset } = useForm();
 
+    const nevigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
 
     const onSubmit = (data) => {
-        logIn(data?.email, data?.password)
 
+        logIn(data?.email, data?.password)
+            .then(res => {
+                if (res.operationType) {
+                    Swal.fire('Welcome again!', '', 'success')
+                    nevigate(from, { replace: true });
+                }
+            })
+            .catch(error => {
+                if (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong! Please try again'
+                    })
+                }
+            })
         reset()
     };
     return (

@@ -68,20 +68,7 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
             console.log('current user', currentUser)
-            // get and set token
-            // if (currentUser) {
-            //     axios.post('http://localhost:5000/jwt-token', {
-            //         email: currentUser.email,
-            //     })
-            //         .then(data => {
-            //             // set access token when user log in or register
-            //             localStorage.setItem('access-token', data.data.token)
-            //             setLoading(false)
-            //         })
-            // } else {
-            //     // remove access token when user log out
-            //     localStorage.removeItem('access-token')
-            // }
+
             setLoading(false)
         })
         return () => {
