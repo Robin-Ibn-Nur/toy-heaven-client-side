@@ -80,8 +80,8 @@ const MyToys = () => {
                                     </td>
                                     <td className="py-2 px-4 border-b">{toy.sellerName || '-'}</td>
                                     <td className="py-2 px-4 border-b">{toy.toyName || '-'}</td>
-                                    <td className="py-2 px-4 border-b">{toy.subcategory || '-'}</td>
-                                    <td className="py-2 px-4 border-b">{toy.description || '-'}</td>
+                                    <td className="py-2 px-4 border-b">{toy.category || '-'}</td>
+                                    <td className="py-2 px-4 border-b">{toy.content || '-'}</td>
                                     <td className="py-2 px-4 border-b">${toy.price || '-'}</td>
                                     <td className="py-2 px-4 border-b">{toy.quantity || '-'}</td>
                                     <td className="py-2 px-4 border-b">

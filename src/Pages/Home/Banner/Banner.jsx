@@ -2,8 +2,10 @@ import React from 'react';
 import bannerImage from "../../../assets/toyHaven.jpg"
 import { Button } from '@nextui-org/react';
 import BossBaby from './BossBaby';
-
+// import { getAllDivision, getAllDistrict, getAllUpazila, getAllUnion } from 'bd-divisions-to-unions';
+// console.log(getAllUpazila("en"))
 const Banner = () => {
+
     const bannerStyle = {
         position: 'relative',
         height: '100vh',

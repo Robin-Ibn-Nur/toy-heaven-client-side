@@ -4,9 +4,15 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { useForm } from 'react-hook-form';
 import GoogleIcon from '../../Components/Icons/GoogleIcon';
 import { Divider } from "@nextui-org/react";
+import { useLocation, useNavigate } from 'react-router-dom';
 const SignUp = ({ setSelected }) => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const onSubmit = (data) => {
         console.log(data);

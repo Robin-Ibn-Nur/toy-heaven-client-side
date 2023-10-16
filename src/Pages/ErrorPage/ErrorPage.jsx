@@ -1,6 +1,6 @@
 import { Link, useRouteError } from "react-router-dom";
 import errorBg from "../../assets/images/Error.jpg"
-import { Button } from "@nextui-org/button";
+
 const ErrorPage = () => {
     const error = useRouteError();
     return (

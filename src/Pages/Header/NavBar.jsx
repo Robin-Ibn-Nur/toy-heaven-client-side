@@ -57,9 +57,14 @@ const NavBar = () => {
     </>
     const loginAndSignUp = <>
         <NavbarItem className="hidden lg:flex items-center gap-5">
-            <Button onClick={handleLogOut} color="danger" variant="ghost">Log out</Button>
-            <NavLink to="signUp&logIn">Sign Up</NavLink>
-            <NavLink to="signUp&logIn">Log in</NavLink>
+
+            {user ? (
+                <Button onClick={handleLogOut} color="danger" variant="ghost">Log out</Button>
+            ) : (
+                <>
+                    <NavLink to="signUp&logIn">Sign Up</NavLink>
+                    <NavLink to="signUp&logIn">Log in</NavLink>
+                </>)}
         </NavbarItem>
     </>
 

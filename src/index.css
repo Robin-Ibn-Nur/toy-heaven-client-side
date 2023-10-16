@@ -1,42 +1,44 @@
- /* @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Courgette&family=Lobster+Two:ital@1&family=Mogra&family=Pixelify+Sans&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Courgette&family=Lobster+Two:ital@1&family=Mogra&family=Pixelify+Sans&display=swap');
 
 
- body {
-     font-family: "Lobster two";
-     font-weight: 700;
-     letter-spacing: 0.1rem;
- }
+body {
+    font-family: Courgette;
+    color: #331A15;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0.1rem;
+}
 
- @keyframes colorChange {
-     0% {
-         color: #FFD700;
-     }
+@keyframes colorChange {
+    0% {
+        color: #FFD700;
+    }
 
-     /* Gold */
-     25% {
-         color: #FF5F6D;
-     }
+    /* Gold */
+    25% {
+        color: #FF5F6D;
+    }
 
-     /* Pink */
-     50% {
-         color: #82D8D8;
-     }
+    /* Pink */
+    50% {
+        color: #82D8D8;
+    }
 
-     /* Light Blue */
-     75% {
-         color: #FFA69E;
-     }
+    /* Light Blue */
+    75% {
+        color: #FFA69E;
+    }
 
-     /* Coral */
-     100% {
-         color: #FFD700;
-     }
+    /* Coral */
+    100% {
+        color: #FFD700;
+    }
 
-     /* Gold */
- }
+    /* Gold */
+}
 
 
 
- @tailwind base;
- @tailwind components;
- @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
