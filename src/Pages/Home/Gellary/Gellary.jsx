@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardBody, CardFooter, Image, Button } from "@nextui-org/react";
+import { Card, CardHeader, Image } from "@nextui-org/react";
 import React from 'react';
 import Title from "../../../Components/Title/Title";
 import image1 from "../../../assets/images/BlackWidow.jpg"

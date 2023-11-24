@@ -10,7 +10,7 @@ const SearchAndTable = ({ renderCell }) => {
     const [searchText, setSearchText] = useState('');
 
     useEffect(() => {
-        axios.get("http://localhost:5000/alltoys")
+        axios.get("https://toy-heaven-server-side.vercel.app/alltoys")
             .then(response => {
                 setToys(response.data);
             })
@@ -19,7 +19,7 @@ const SearchAndTable = ({ renderCell }) => {
             });
     }, []);
 
-
+    console.log(toys);
 
 
     const handleSearch = async () => {

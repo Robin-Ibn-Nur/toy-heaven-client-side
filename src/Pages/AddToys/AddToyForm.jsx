@@ -15,12 +15,11 @@ const AddToyForm = () => {
     const imageBB_url = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_Image_Upload_token}`
 
     const onSubmit = async (data) => {
-        console.log(data.photo)
         const newCollection = {
             ...data,
             userEmail: user?.email,
         };
-        console.log(newCollection.photo);
+        console.log(newCollection);
         try {
 
 
@@ -35,6 +34,7 @@ const AddToyForm = () => {
 
                 // set the data to database
                 const res = await axios.post('http://localhost:5000/toys', newCollection);
+                console.log("newCollection:", newCollection);
                 if (res.data.insertedId) {
                     reset()
                     Swal.fire({

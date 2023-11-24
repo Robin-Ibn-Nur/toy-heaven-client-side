@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
 import { User, Chip, Tooltip } from "@nextui-org/react";
 import { EditIcon } from "./EditIcon";
-import { DeleteIcon } from "./DeleteIcon";
 import { EyeIcon } from "./EyeIcon";
 import SearchAndTable from "./SearchAndTable";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +14,6 @@ const AllToys = () => {
     const nevigate = useNavigate();
     const handleDetails = (id) => {
         nevigate(`/toy/${id}`)
-        console.log("Details of item with id:", id);
     };
 
 
@@ -36,7 +34,6 @@ const AllToys = () => {
                 return (
                     <div className="flex flex-col">
                         <p className="text-bold text-sm capitalize">{cellValue}</p>
-                        {/* <p className="text-bold text-sm capitalize text-default-400">{data?.category}</p> */}
                     </div>
                 );
             case "price":
@@ -62,16 +59,12 @@ const AllToys = () => {
                                 <EyeIcon />
                             </span>
                         </Tooltip>
-                        <Tooltip onClick={handleDetails} content="Edit user">
+                        <Tooltip onClick={handleDetails} content="Edit Details">
                             <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                                 <EditIcon />
                             </span>
                         </Tooltip>
-                        <Tooltip color="danger" content="Delete user">
-                            <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                                <DeleteIcon />
-                            </span>
-                        </Tooltip>
+
                     </div>
                 );
             default:
