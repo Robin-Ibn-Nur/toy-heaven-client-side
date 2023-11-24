@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import { Button } from '@nextui-org/button';
+import { User } from '@nextui-org/react';
 
 const MyToys = () => {
     const { user } = useContext(AuthContext);
@@ -13,9 +15,7 @@ const MyToys = () => {
         const response = await axios.get(`http://localhost:5000/toys?userEmail=${user?.email}&sortBy=${sortBy}`);
         return response.data;
     };
-
     const { data: toyData, refetch } = useQuery(['toys', user?.email, sortBy], fetchToys);
-
     const handleDelete = (id) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -46,7 +46,15 @@ const MyToys = () => {
     const handleSortChange = (e) => {
         setSortBy(e.target.value);
     };
-
+    const tableData = [
+        "",
+        "Toy Name",
+        "Category",
+        "Description",
+        "Price",
+        "Quantty",
+        "",
+    ]
     return (
         <div className="container mx-auto my-10">
             {toyData && toyData.length <= 0 ? (
@@ -65,27 +73,45 @@ const MyToys = () => {
                     <table className="min-w-full bg-white border border-gray-300 mb-4">
                         <thead>
                             <tr>
-                                {/* Your table headers */}
+                                <td></td>
+                                {tableData.map((tdata, index) => <td className="py-2 px-4 border-b" key={index}>{tdata}</td>)}
                             </tr>
                         </thead>
                         <tbody>
                             {toyData?.map((toy) => (
                                 <tr key={toy._id}>
                                     <td className="py-2 px-4 border-b">
-                                        <button onClick={() => handleDelete(toy._id)} className="btn btn-circle btn-outline">
+                                        {/* <button onClick={() => handleDelete(toy._id)} className="btn btn-circle btn-outline">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                                             </svg>
-                                        </button>
+                                        </button> */}
+                                        <Button onClick={() => handleDelete(toy._id)} color="danger" variant="bordered" startContent={<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>}>
+                                            Delete user
+                                        </Button>
                                     </td>
-                                    <td className="py-2 px-4 border-b">{toy.sellerName || '-'}</td>
+                                    {/* <td className="py-2 px-4 border-b">{toy.sellerName || '-'}</td> */}
+                                    <td className="py-2 px-4 border-b">
+                                        <User
+                                            name={toy?.userEmail || '-'}
+                                            description={toy?.toyName || '-'}
+                                            avatarProps={{
+                                                src: toy?.photo || '-'
+                                            }}
+                                        />
+                                    </td>
                                     <td className="py-2 px-4 border-b">{toy.toyName || '-'}</td>
                                     <td className="py-2 px-4 border-b">{toy.category || '-'}</td>
-                                    <td className="py-2 px-4 border-b">{toy.content || '-'}</td>
+                                    <td className="py-2 px-4 border-b">{toy?.content && toy.content.split(/\s+/).slice(0, 5).join(" ")} ...</td>
                                     <td className="py-2 px-4 border-b">${toy.price || '-'}</td>
                                     <td className="py-2 px-4 border-b">{toy.quantity || '-'}</td>
                                     <td className="py-2 px-4 border-b">
-                                        <Link to={`/updateToyInfo/${toy._id}`} className='bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full'>Update</Link>
+                                        <Button isDisabled className='bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full'>
+                                            Update
+                                        </Button>
+                                        {/* <Link to={`/updateToyInfo/${toy._id}`} >Update</Link> */}
                                     </td>
                                 </tr>
                             ))}

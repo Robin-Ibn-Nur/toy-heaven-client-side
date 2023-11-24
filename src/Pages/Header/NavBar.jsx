@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Avatar, Tooltip } from "@nextui-org/react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import NameAndLogo from "../../Components/WebsiteName/NameAndLogo";
 import Swal from "sweetalert2";
 
@@ -35,9 +35,9 @@ const NavBar = () => {
         })
 
     }
+    const navigate = useNavigate();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuItems = [
-        "Profile",
         "Home",
         "All Toys",
         "My Toys",
@@ -45,6 +45,28 @@ const NavBar = () => {
         "Blogs",
         "Log Out",
     ];
+    const handleMenuClick = (item) => {
+        switch (item) {
+            case 'Home':
+                navigate.push('/');
+                break;
+            case 'All Toys':
+                navigate.push('/all-toys');
+                break;
+            case 'My Toys':
+                navigate.push('/my-toys');
+                break;
+            case 'Add a Toys':
+                navigate.push('/add-a-toys');
+                break;
+            case 'Blogs':
+                navigate.push('/blogs');
+                break;
+
+            default:
+                break;
+        }
+    };
 
 
 
@@ -118,16 +140,12 @@ const NavBar = () => {
 
             <NavbarContent className="sm:hidden sm:pr-3 " justify="center">
                 <NavbarBrand>
-                    {/* <AcmeLogo /> */}
-                    {/* <p style={colorfulTextStyles}>Toy Heaven</p> */}
                     <NameAndLogo />
                 </NavbarBrand>
             </NavbarContent>
 
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
                 <NavbarBrand>
-                    {/* <AcmeLogo /> */}
-                    {/* <p style={colorfulTextStyles}>Toy Heaven</p> */}
                     <NameAndLogo />
                 </NavbarBrand>
                 {nabMenu}
@@ -138,18 +156,31 @@ const NavBar = () => {
             </NavbarContent>
 
             <NavbarMenu>
-                {menuItems.map((item, index) => (
+                {/* {menuItems.map((item, index) => (
                     <NavbarMenuItem key={`${item}-${index}`}>
-                        <Link
+                        <NavLink
                             className="w-full"
                             color={
                                 index === 2 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
                             }
                             href="#"
                             size="lg"
+
                         >
                             {item}
-                        </Link>
+                        </NavLink>
+                    </NavbarMenuItem>
+                ))} */}
+                {menuItems.map((item, index) => (
+                    <NavbarMenuItem key={`${item}-${index}`}>
+                        <NavLink
+                            className="w-full"
+                            onClick={() => handleMenuClick(item)}
+                            size="lg"
+                            to={item}
+                        >
+                            {item}
+                        </NavLink>
                     </NavbarMenuItem>
                 ))}
             </NavbarMenu>
