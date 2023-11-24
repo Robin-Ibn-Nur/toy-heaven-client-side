@@ -24,7 +24,7 @@ const SearchAndTable = ({ renderCell }) => {
 
     const handleSearch = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/getToyNameByText/${searchText}`);
+            const response = await fetch(`https://toy-heaven-server-side.vercel.app/getToyNameByText/${searchText}`);
             const data = await response.json();
             console.log(data);
             setToys(data);

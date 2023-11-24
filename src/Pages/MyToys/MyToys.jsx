@@ -12,7 +12,7 @@ const MyToys = () => {
     const [sortBy, setSortBy] = useState('');
 
     const fetchToys = async () => {
-        const response = await axios.get(`http://localhost:5000/toys?userEmail=${user?.email}&sortBy=${sortBy}`);
+        const response = await axios.get(`https://toy-heaven-server-side.vercel.app/toys?userEmail=${user?.email}&sortBy=${sortBy}`);
         return response.data;
     };
     const { data: toyData, refetch } = useQuery(['toys', user?.email, sortBy], fetchToys);
@@ -27,7 +27,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!',
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/toys/${id}`)
+                axios.delete(`https://toy-heaven-server-side.vercel.app/toys/${id}`)
                     .then(() => {
                         refetch();
                         Swal.fire(

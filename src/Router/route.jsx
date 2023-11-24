@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
                 path: "/toy/:id",
                 element: <PrivateRoute><ToyDetailsPage /></PrivateRoute>,
                 // element: <ToyDetailsPage />,
-                loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+                loader: ({ params }) => fetch(`https://toy-heaven-server-side.vercel.app/toys/${params.id}`)
             },
             // {
             //     path: "login",

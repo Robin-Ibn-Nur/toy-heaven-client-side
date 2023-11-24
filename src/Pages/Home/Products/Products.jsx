@@ -8,7 +8,7 @@ const Products = () => {
     const [toys, setToys] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:5000/alltoys")
+        axios.get("https://toy-heaven-server-side.vercel.app/alltoys")
             .then(response => {
                 setToys(response.data);
             })

@@ -33,7 +33,7 @@ const AddToyForm = () => {
                 newCollection.photo = imgURL;
 
                 // set the data to database
-                const res = await axios.post('http://localhost:5000/toys', newCollection);
+                const res = await axios.post('https://toy-heaven-server-side.vercel.app/toys', newCollection);
                 console.log("newCollection:", newCollection);
                 if (res.data.insertedId) {
                     reset()
