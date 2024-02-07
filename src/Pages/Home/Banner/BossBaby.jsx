@@ -1,6 +1,6 @@
 import { Image } from '@nextui-org/react';
 import React from 'react';
-import bossBaby from "../../../../public/The-Boss-Baby-Movie-PNG-180x180.png"
+import bossBaby from "/The-Boss-Baby-Movie-PNG-180x180.png"
 
 const BossBaby = () => {
     return (
