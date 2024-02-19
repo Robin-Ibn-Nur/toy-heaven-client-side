@@ -44,7 +44,7 @@ const Products = () => {
                             {toys.map((toy) => {
                                 if (toy.category === item.label) {
                                     return (
-                                        <Link to={`/toy/${toy._id}`} key={toy._id}>
+                                        <Link to={`/toys/${toy._id}`} key={toy._id}>
                                             <Card isFooterBlurred shadow="sm" isPressable className='h-auto' onPress={() => console.log("item pressed")}>
                                                 <CardBody className="overflow-visible p-0">
                                                     <Image
