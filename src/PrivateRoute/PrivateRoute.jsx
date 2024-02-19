@@ -19,16 +19,15 @@ const PrivateRoute = ({ children }) => {
     if (user) {
         return children;
     } else {
-        Swal({
-            title: "Are you sure?",
+        Swal.fire({
             text: "You have to log in first to view details",
             icon: "warning",
             buttons: true,
             dangerMode: true,
         })
     }
+    return <Navigate to="/signUp&logIn" state={{ from: location }} replace></Navigate>;
 
-    return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
 };
 
 export default PrivateRoute;
