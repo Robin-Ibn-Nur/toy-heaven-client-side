@@ -2,7 +2,6 @@ import { Button, Input, Table, TableBody, TableCell, TableColumn, TableHeader, T
 import React, { useEffect, useState } from 'react';
 import { SearchIcon } from './SearchIcon';
 import { columns } from './data';
-
 import axios from 'axios';
 
 const SearchAndTable = ({ renderCell }) => {
