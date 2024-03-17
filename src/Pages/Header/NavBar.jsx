@@ -4,6 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { NavLink, useNavigate } from "react-router-dom";
 import NameAndLogo from "../../Components/WebsiteName/NameAndLogo";
 import Swal from "sweetalert2";
+import Menu from "./Menu";
 
 
 const NavBar = () => {
@@ -68,38 +69,6 @@ const NavBar = () => {
         }
     };
 
-
-
-    const nabMenu = <>
-
-        <NavbarItem className="cursor-pointer">
-            <NavLink to="/" color="foreground" >
-                Home
-            </NavLink>
-        </NavbarItem>
-        <NavbarItem className="cursor-pointer">
-            <NavLink to="/all-toys" color="foreground" >
-                All Toys
-            </NavLink>
-        </NavbarItem>
-        {user && <>
-            <NavbarItem className="cursor-pointer">
-                <NavLink to="/my-toys" color="foreground" >
-                    My Toys
-                </NavLink>
-            </NavbarItem>
-            <NavbarItem className="cursor-pointer">
-                <NavLink to="/add-a-toys" color="foreground" >
-                    Add a Toys
-                </NavLink>
-            </NavbarItem>
-        </>}
-        <NavbarItem className="cursor-pointer">
-            <NavLink to="/blogs" color="foreground" >
-                Blogs
-            </NavLink>
-        </NavbarItem>
-    </>
     const loginAndSignUp = <>
         <NavbarItem className="hidden lg:flex items-center gap-5">
 
@@ -133,6 +102,7 @@ const NavBar = () => {
             isBordered
             isMenuOpen={isMenuOpen}
             onMenuOpenChange={setIsMenuOpen}
+            className="fixed"
         >
             <NavbarContent className="sm:hidden" justify="start">
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
@@ -148,7 +118,7 @@ const NavBar = () => {
                 <NavbarBrand>
                     <NameAndLogo />
                 </NavbarBrand>
-                {nabMenu}
+                <Menu />
             </NavbarContent>
 
             <NavbarContent justify="end">
@@ -156,21 +126,6 @@ const NavBar = () => {
             </NavbarContent>
 
             <NavbarMenu>
-                {/* {menuItems.map((item, index) => (
-                    <NavbarMenuItem key={`${item}-${index}`}>
-                        <NavLink
-                            className="w-full"
-                            color={
-                                index === 2 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
-                            }
-                            href="#"
-                            size="lg"
-
-                        >
-                            {item}
-                        </NavLink>
-                    </NavbarMenuItem>
-                ))} */}
                 {menuItems.map((item, index) => (
                     <NavbarMenuItem key={`${item}-${index}`}>
                         <NavLink
