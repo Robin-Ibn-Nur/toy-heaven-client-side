@@ -2,9 +2,9 @@ import React from 'react';
 
 const UpdateToyInfo = () => {
     return (
-        <div>
-
-        </div>
+        <>
+            Update Toy Info
+        </>
     );
 };
 
